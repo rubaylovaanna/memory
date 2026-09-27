@@ -28,7 +28,6 @@
     z-index: 0;
   }
 
-  /* ===== ГЛАВНЫЙ КОНТЕЙНЕР ===== */
   .game-wrapper {
     display: flex;
     flex-direction: column;
@@ -40,7 +39,6 @@
     gap: 8px;
   }
 
-  /* ===== ЗАГОЛОВОК ===== */
   .game-title {
     text-align: center;
     flex-shrink: 0;
@@ -55,7 +53,6 @@
     letter-spacing: 0.5px;
   }
 
-  /* ===== ОСНОВНАЯ ОБЛАСТЬ ===== */
   .main-area {
     display: flex;
     flex: 1;
@@ -65,7 +62,6 @@
     justify-content: center;
   }
 
-  /* ===== ЛЕВАЯ ПАНЕЛЬ ===== */
   .side-panel {
     display: flex;
     flex-direction: column;
@@ -121,7 +117,17 @@
   .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(79,172,254,0.5); }
   .btn:active { transform: translateY(0); }
 
-  /* ===== ИГРОВОЕ ПОЛЕ (десктоп: 5×4) ===== */
+  /* Кнопка звука */
+  .btn-sound {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    box-shadow: 0 4px 12px rgba(245,87,108,0.4);
+    font-size: 1.2em;
+    padding: 8px 10px;
+  }
+
+  .btn-sound:hover { box-shadow: 0 6px 18px rgba(245,87,108,0.5); }
+  .btn-sound.muted { opacity: 0.5; }
+
   .game-board {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -134,7 +140,6 @@
     flex-shrink: 0;
   }
 
-  /* ===== КАРТОЧКА (строго квадратная) ===== */
   .card {
     cursor: pointer;
     position: relative;
@@ -211,11 +216,9 @@
     transform: rotateY(180deg);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     border: 3px solid #eee;
-    /* Белый фон + padding чтобы картинка не прилипала */
     padding: 6%;
   }
 
-  /* ✅ Картинка НЕ обрезается — contain + отступы */
   .card-front img {
     width: 100%;
     height: 100%;
@@ -224,7 +227,6 @@
     border-radius: 4px;
   }
 
-  /* ===== МОДАЛЬНЫЕ ОКНА ===== */
   .modal-overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -268,18 +270,8 @@
     50% { transform: translateY(-10px); }
   }
 
-  .modal h2 {
-    font-size: 1.6em;
-    color: #e74c3c;
-    margin-bottom: 8px;
-  }
-
-  .modal p {
-    font-size: 0.95em;
-    color: #666;
-    margin-bottom: 6px;
-    line-height: 1.5;
-  }
+  .modal h2 { font-size: 1.6em; color: #e74c3c; margin-bottom: 8px; }
+  .modal p { font-size: 0.95em; color: #666; margin-bottom: 6px; line-height: 1.5; }
 
   .modal .rules {
     background: #f8f9fa;
@@ -292,11 +284,7 @@
     line-height: 1.6;
   }
 
-  .modal .rules li {
-    margin-bottom: 3px;
-    list-style: none;
-  }
-
+  .modal .rules li { margin-bottom: 3px; list-style: none; }
   .modal .rules li::before { content: '🦊 '; }
 
   .modal .stars { font-size: 2.2em; margin-bottom: 8px; }
@@ -309,7 +297,6 @@
 
   .btn-start:hover { box-shadow: 0 6px 18px rgba(245,87,108,0.5); }
 
-  /* ===== КОНФЕТТИ ===== */
   .confetti-container {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -330,40 +317,14 @@
     100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
   }
 
-  /* ============================================
-     ПЛАНШЕТЫ (до 768px) — сайдбар сверху, 4×5
-     ============================================ */
   @media (max-width: 768px) {
     .game-title h1 { font-size: 1.3em; }
-
-    .main-area {
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .side-panel {
-      flex-direction: row;
-      width: 100%;
-      justify-content: space-around;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-
-    .stat-box {
-      padding: 5px 8px;
-      border-radius: 10px;
-      flex: 1;
-    }
-
+    .main-area { flex-direction: column; gap: 8px; }
+    .side-panel { flex-direction: row; width: 100%; justify-content: space-around; gap: 6px; flex-shrink: 0; }
+    .stat-box { padding: 5px 8px; border-radius: 10px; flex: 1; }
     .stat-box .label { font-size: 0.55em; margin-bottom: 0; }
     .stat-box .value { font-size: 1.1em; }
-
-    .btn {
-      padding: 6px 10px;
-      font-size: 0.7em;
-      border-radius: 10px;
-    }
-
+    .btn { padding: 6px 10px; font-size: 0.7em; border-radius: 10px; }
     .game-board {
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(5, 1fr);
@@ -372,43 +333,27 @@
       width: min(95vw, calc((100dvh - 130px) * 4 / 5));
       max-height: calc(100dvh - 130px);
     }
-
     .card-back::before { font-size: 1.6em; }
     .card-front { padding: 5%; }
   }
 
-  /* ============================================
-     МОБИЛЬНЫЕ (до 480px)
-     ============================================ */
   @media (max-width: 480px) {
     .game-wrapper { padding: 6px; gap: 6px; }
-
     .game-title { padding: 2px 0; }
     .game-title h1 { font-size: 1.1em; }
-
     .main-area { gap: 6px; }
     .side-panel { gap: 4px; }
-
     .stat-box { padding: 4px 6px; border-radius: 8px; }
     .stat-box .label { font-size: 0.5em; }
     .stat-box .value { font-size: 0.95em; }
-
     .btn { padding: 5px 8px; font-size: 0.65em; border-radius: 8px; }
-
-    .game-board {
-      gap: 6px;
-      width: min(96vw, calc((100dvh - 115px) * 4 / 5));
-    }
-
+    .game-board { gap: 6px; width: min(96vw, calc((100dvh - 115px) * 4 / 5)); }
     .card { border-radius: 8px; }
     .card-back::before { font-size: 1.3em; }
     .card-back::after { top: 4px; left: 4px; right: 4px; bottom: 4px; border-width: 1.5px; }
     .card-front { border-width: 2px; padding: 4%; }
   }
 
-  /* ============================================
-     ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (до 360px)
-     ============================================ */
   @media (max-width: 360px) {
     .game-title h1 { font-size: 1em; }
     .game-board { gap: 4px; }
@@ -418,30 +363,16 @@
     .card-front { padding: 3%; }
   }
 
-  /* ============================================
-     ГОРИЗОНТАЛЬНАЯ ОРИЕНТАЦИЯ МОБИЛКИ
-     ============================================ */
   @media (max-height: 500px) and (orientation: landscape) {
     .game-wrapper { padding: 4px; gap: 4px; }
     .game-title h1 { font-size: 1em; }
     .game-title { padding: 2px 0; }
-
-    .main-area {
-      flex-direction: row;
-      align-items: stretch;
-    }
-
-    .side-panel {
-      flex-direction: column;
-      width: 90px;
-      gap: 4px;
-    }
-
+    .main-area { flex-direction: row; align-items: stretch; }
+    .side-panel { flex-direction: column; width: 90px; gap: 4px; }
     .stat-box { padding: 4px 6px; }
     .stat-box .label { font-size: 0.45em; }
     .stat-box .value { font-size: 0.9em; }
     .btn { padding: 6px 8px; font-size: 0.6em; }
-
     .game-board {
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(4, 1fr);
@@ -450,7 +381,6 @@
       max-height: calc(100dvh - 55px);
       gap: 4px;
     }
-
     .card { border-radius: 6px; }
     .card-back::before { font-size: 1.2em; }
     .card-back::after { top: 3px; left: 3px; right: 3px; bottom: 3px; }
@@ -460,11 +390,9 @@
 </head>
 <body>
 
-<!-- ===== СТАРТОВЫЙ ПОПАП ===== -->
 <div class="modal-overlay show" id="startModal">
   <div class="modal">
-    <img class="fox-img" src="fox.png" alt="Лисичка"
-         onerror="this.style.display='none'">
+    <img class="fox-img" src="fox.png" alt="Лисичка" onerror="this.style.display='none'">
     <h2>Привет! Я лисичка! </h2>
     <p>Давай поиграем в Мемори и выучим звук <b>[С]</b>!</p>
     <ul class="rules">
@@ -472,23 +400,20 @@
       <li>Найди все 10 пар одинаковых картинок</li>
       <li>Все слова содержат звук [С]!</li>
     </ul>
-    <button class="btn btn-start" onclick="startGame()">🎮 Начать игру!</button>
+    <button class="btn btn-start" onclick="startGame()"> Начать игру!</button>
   </div>
 </div>
 
-<!-- ===== ПОПАП ПОБЕДЫ ===== -->
 <div class="modal-overlay" id="winModal">
   <div class="modal">
-    <img class="fox-img" src="fox.png" alt="Лисичка"
-         onerror="this.style.display='none'">
-    <h2>Ура! Ты победил! 🎉</h2>
+    <img class="fox-img" src="fox.png" alt="Лисичка" onerror="this.style.display='none'">
+    <h2>Ура! Ты победил! </h2>
     <div class="stars" id="starsDisplay">⭐⭐⭐</div>
     <p id="winText">Ты нашёл все 10 пар!</p>
-    <button class="btn btn-start" onclick="resetGame()"> Играть ещё!</button>
+    <button class="btn btn-start" onclick="resetGame()">🔄 Играть ещё!</button>
   </div>
 </div>
 
-<!-- ===== ИГРА ===== -->
 <div class="game-wrapper">
   <div class="game-title">
     <h1>Игра мемори «Звук С»</h1>
@@ -508,7 +433,8 @@
         <div class="label">Время</div>
         <div class="value timer" id="timer">0:00</div>
       </div>
-      <button class="btn" onclick="resetGame()"> Заново</button>
+      <button class="btn btn-sound" id="soundBtn" onclick="toggleSound()" title="Включить/выключить звук">🔊</button>
+      <button class="btn" onclick="resetGame()">🔄 Заново</button>
     </div>
 
     <div class="game-board" id="gameBoard"></div>
@@ -518,6 +444,94 @@
 <div class="confetti-container" id="confettiContainer"></div>
 
 <script>
+// ============================================
+//  ЗВУКОВАЯ СИСТЕМА (Web Audio API)
+// ============================================
+let audioCtx = null;
+let soundEnabled = true;
+
+function getAudioContext() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  return audioCtx;
+}
+
+function playTone(frequency, duration, type = 'sine', volume = 0.3, delay = 0) {
+  if (!soundEnabled) return;
+  try {
+    const ctx = getAudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = type;
+    osc.frequency.setValueAtTime(frequency, ctx.currentTime + delay);
+
+    gain.gain.setValueAtTime(volume, ctx.currentTime + delay);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + delay + duration);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(ctx.currentTime + delay);
+    osc.stop(ctx.currentTime + delay + duration);
+  } catch (e) {
+    console.log('Audio error:', e);
+  }
+}
+
+// Звук переворота карточки — короткий щелчок
+function playFlipSound() {
+  playTone(800, 0.08, 'sine', 0.2);
+  playTone(1200, 0.06, 'sine', 0.15, 0.03);
+}
+
+// Звук правильного ответа — два восходящих тона (до-ми)
+function playMatchSound() {
+  playTone(523, 0.15, 'sine', 0.3);       // C5
+  playTone(659, 0.2, 'sine', 0.3, 0.12);  // E5
+  playTone(784, 0.25, 'sine', 0.25, 0.24); // G5
+}
+
+// Звук неправильного ответа — низкий нисходящий тон
+function playErrorSound() {
+  playTone(300, 0.15, 'triangle', 0.25);
+  playTone(200, 0.25, 'triangle', 0.2, 0.1);
+}
+
+// Финальный звук ликования — мелодия победы
+function playWinSound() {
+  const notes = [
+    { freq: 523, time: 0 },      // C5
+    { freq: 587, time: 0.12 },   // D5
+    { freq: 659, time: 0.24 },   // E5
+    { freq: 784, time: 0.36 },   // G5
+    { freq: 1047, time: 0.48 },  // C6
+    { freq: 784, time: 0.65 },   // G5
+    { freq: 1047, time: 0.78 },  // C6
+  ];
+
+  notes.forEach(note => {
+    playTone(note.freq, 0.2, 'sine', 0.3, note.time);
+  });
+
+  // Финальный аккорд
+  playTone(523, 0.5, 'sine', 0.2, 1.0);
+  playTone(659, 0.5, 'sine', 0.2, 1.0);
+  playTone(784, 0.5, 'sine', 0.2, 1.0);
+  playTone(1047, 0.6, 'sine', 0.25, 1.0);
+}
+
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  const btn = document.getElementById('soundBtn');
+  btn.textContent = soundEnabled ? '' : '🔇';
+  btn.classList.toggle('muted', !soundEnabled);
+}
+
+// ============================================
+// ИГРОВАЯ ЛОГИКА
+// ============================================
 const cardsData = [
   { id: 'aist',    name: 'Аист',    img: 'images/aist.png' },
   { id: 'bus',     name: 'Автобус', img: 'images/bus.png' },
@@ -542,6 +556,8 @@ let gameStarted = false;
 
 function startGame() {
   document.getElementById('startModal').classList.remove('show');
+  // Инициализация аудио по первому клику (требование браузеров)
+  getAudioContext();
   initGame();
 }
 
@@ -561,8 +577,7 @@ function initGame() {
     cardEl.innerHTML = `
       <div class="card-face card-back"></div>
       <div class="card-face card-front">
-        <img src="${card.img}" alt="${card.name}"
-             onerror="this.style.display='none';">
+        <img src="${card.img}" alt="${card.name}" onerror="this.style.display='none';">
       </div>
     `;
 
@@ -604,6 +619,9 @@ function flipCard(cardEl, index) {
   cardEl.classList.add('flipped');
   flippedCards.push({ el: cardEl, index, id: cards[index].id });
 
+  // Звук переворота
+  playFlipSound();
+
   if (flippedCards.length === 2) {
     moves++;
     updateStats();
@@ -616,7 +634,9 @@ function checkMatch() {
   const [card1, card2] = flippedCards;
 
   if (card1.id === card2.id) {
+    // ✅ Правильный ответ
     setTimeout(() => {
+      playMatchSound();
       card1.el.classList.add('matched');
       card2.el.classList.add('matched');
       matchedPairs++;
@@ -625,11 +645,13 @@ function checkMatch() {
       isLocked = false;
 
       if (matchedPairs === cardsData.length) {
-        setTimeout(showWin, 600);
+        setTimeout(showWin, 800);
       }
     }, 500);
   } else {
+    // ❌ Неправильный ответ
     setTimeout(() => {
+      playErrorSound();
       card1.el.classList.add('shake');
       card2.el.classList.add('shake');
     }, 400);
@@ -671,6 +693,7 @@ function showWin() {
 
   document.getElementById('winModal').classList.add('show');
   launchConfetti();
+  playWinSound();
 }
 
 function launchConfetti() {
