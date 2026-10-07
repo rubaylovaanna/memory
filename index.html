@@ -758,8 +758,9 @@ function showWin() {
   clearInterval(timerInterval);
 
   let stars = '⭐⭐⭐';
-  if (moves > 14) stars = '⭐⭐';
-  if (moves > 20) stars = '⭐';
+  if (moves > 20) stars = '⭐⭐';
+  if (moves > 25) stars = '⭐⭐';
+  if (moves > 30) stars = '⭐';
 
   document.getElementById('starsDisplay').textContent = stars;
   document.getElementById('winText').innerHTML =
